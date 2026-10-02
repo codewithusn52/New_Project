@@ -1,0 +1,46 @@
+{% extends '<cafe>base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Your Cart</h2>
+    {% if cart_items %}
+        <table class="table mt-3">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entry in cart_items %}
+                <tr>
+                    <td>{{ entry.item.name }}</td>
+                    <td>${{ entry.item.price }}</td>
+                    <td>{{ entry.quantity }}</td>
+                    <td>${{ entry.subtotal }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <h4>Total: ${{ total_price }}</h4>
+
+        <hr>
+        <form action="{% url 'mycafe:place_order' %}" method="POST" class="mt-3">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label>Your Name:</label>
+                <input type="text" name="customer_name" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label>Table Number:</label>
+                <input type="number" name="table_number" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary">Place Order</button>
+        </form>
+    {% else %}
+        <p>Your cart is empty. <a href="{% url 'mycafe:menu_list' %}">Browse Menu</a></p>
+    {% endif %}
+</div>
+{% endblock %}

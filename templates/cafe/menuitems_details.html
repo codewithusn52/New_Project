@@ -5,6 +5,6 @@
     <p><strong>Category:</strong> {{ item.category.name }}</p>
     <p><strong>Price:</strong> ${{ item.price }}</p>
     <p><strong>Description:</strong> {{ item.description|default:"No description provided." }}</p>
-    <a href="{% url 'cafe:menu_list' %}" class="btn btn-secondary">Back to Menu</a>
+    <a href="{% url 'mycafe:menu_list' %}" class="btn btn-secondary">Back to Menu</a>
 </div>
 {% endblock %}

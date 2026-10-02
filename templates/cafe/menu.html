@@ -20,12 +20,16 @@
     <tbody>
         {% for item in items %}
         <tr>
-            <td><a href="{% url 'cafe:item_detail' item.pk %}">{{ item.name }}</a></td>
+            <td><a href="{% url 'mycafe:item_detail' item.pk %}">{{ item.name }}</a></td>
             <td>{{ item.category.name }}</td>
             <td>{{ item.price }}</td>
             <td>
-                <a href="{% url 'cafe:item_update' item.pk %}" class="btn btn-warning btn-sm">Edit</a>
-                <a href="{% url 'cafe:item_delete' item.pk %}" class="btn btn-danger btn-sm">Delete</a>
+                <a href="{% url 'mycafe:add_to_cart' item.id %}" class="btn btn-sm btn-success">+ Add to Cart</a>
+                {% if user.is_staff %}
+                     <a href="{% url 'mycafe:item_update' item.id %}" class="btn btn-sm btn-warning">Edit</a>
+                     <a href="{% url 'mycafe:item_delete' item.id %}" class="btn btn-sm btn-danger">Delete</a>
+                {% endif %}
+
             </td>
         </tr>
         {% empty %}

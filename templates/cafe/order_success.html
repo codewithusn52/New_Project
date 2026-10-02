@@ -1,0 +1,9 @@
+{% extends '<cafe>base.html' %}
+
+{% block content %}
+<div class="container text-center mt-5">
+    <h2 class="text-success">🎉 Order Placed Successfully!</h2>
+    <p>Thank you for ordering at CapCafe. Your meal is being prepared.</p>
+    <a href="{% url 'mycafe:menu_list' %}" class="btn btn-primary">Back to Menu</a>
+</div>
+{% endblock %}

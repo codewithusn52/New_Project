@@ -12,3 +12,5 @@ class MenuItemForm(forms.ModelForm):
             'is_available': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
 
         }
+
+

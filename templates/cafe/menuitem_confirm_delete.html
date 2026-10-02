@@ -5,7 +5,7 @@
     <form method="POST">
         {% csrf_token %}
         <button type="submit" class="btn btn-danger">Yes, Delete</button>
-        <a href="{% url 'cafe:menu_list' %}" class="btn btn-secondary">Cancel</a>
+        <a href="{% url 'mycafe:menu_list' %}" class="btn btn-secondary">Cancel</a>
     </form>
 </div>
 {% endblock %}
