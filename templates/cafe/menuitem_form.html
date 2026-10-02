@@ -1,1 +1,13 @@
-menu item form
+{% extends 'base.html' %}
+{% block content %}
+<h3>{{ title }}</h3>
+<form method="POST" class="card p-4">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div>
+        <button type="submit" class="btn btn-success">Save Item</button>
+        <a href="{% url 'cafe:menu_list' %}" class="btn btn-secondary">Cancel</a>
+    </div>
+</form>
+{% endblock %}
+

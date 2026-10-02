@@ -1,1 +1,36 @@
-menu
+{% extends 'base.html' %}
+{% block content %}
+<h3>Menu Items</h3>
+
+<!-- Query Parameter Search -->
+<form method="GET" class="d-flex my-3">
+    <input type="text" name="q" class="form-control me-2" placeholder="Search item..." value="{{ query }}">
+    <button type="submit" class="btn btn-secondary">Search</button>
+</form>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Price ($)</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in items %}
+        <tr>
+            <td><a href="{% url 'cafe:item_detail' item.pk %}">{{ item.name }}</a></td>
+            <td>{{ item.category.name }}</td>
+            <td>{{ item.price }}</td>
+            <td>
+                <a href="{% url 'cafe:item_update' item.pk %}" class="btn btn-warning btn-sm">Edit</a>
+                <a href="{% url 'cafe:item_delete' item.pk %}" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="4">No items found.</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
