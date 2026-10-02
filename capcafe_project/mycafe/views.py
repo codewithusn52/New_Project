@@ -76,7 +76,7 @@ def view_cart(request):
             'subtotal': subtotal
         })
 
-    return render(request, 'cart.html', {
+    return render(request, 'cafe/cart.html', {
         'cart_items': cart_items,
         'total_price': total_price
     })
@@ -112,5 +112,5 @@ def place_order(request):
     return redirect('mycafe:view_cart')
 
 def order_success(request):
-    return render(request, 'order_success.html')
+    return render(request, 'cafe/order_success.html')
 
