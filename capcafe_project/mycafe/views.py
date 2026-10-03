@@ -24,7 +24,7 @@ def menu_list(request):
 # 3. READ (Detail) View (Class-Based View)
 class MenuItemDetailView(DetailView):
     model = MenuItem
-    template_name = 'cafe/menuitem_detail.html'
+    template_name = 'cafe/menuitems_details.html'
     context_object_name = 'item'
 
 # 4. CREATE View (FBV)
